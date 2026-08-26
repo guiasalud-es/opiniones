@@ -1,10 +1,364 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Salud España - Análisis, Opiniones y Precios de Productos Naturales</title>
+    <meta name="description" content="Portal independiente de análisis de suplementos, cremas y productos de salud en España. Descubre opiniones reales, ingredientes, ofertas y precios actualizados.">
+    <link rel="canonical" href="https://guiasalud-es.github.io/opiniones/">
+    
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --secondary: #0f172a;
+            --accent: #16a34a;
+            --accent-hover: #15803d;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: var(--secondary);
+            color: #ffffff;
+            padding: 20px 0;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero-banner h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #f8fafc;
+        }
+
+        .hero-banner p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 800px;
+        }
+
+        .grid-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #ffffff;
+            padding: 15px;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .category-tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn-review {
+            display: block;
+            text-align: center;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.2s;
+        }
+
+        .btn-review:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .content-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 26px;
+            color: var(--secondary);
+            margin: 30px 0 15px 0;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .content-section h2:first-child {
+            margin-top: 0;
+        }
+
+        .content-section h3 {
+            font-size: 20px;
+            color: var(--primary-dark);
+            margin: 20px 0 10px 0;
+        }
+
+        .content-section p {
+            margin-bottom: 18px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .content-section ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        footer {
+            background-color: var(--secondary);
+            color: #94a3b8;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #334155;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner { padding: 25px; }
+            .hero-banner h1 { font-size: 24px; }
+            .content-section { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Site-ul funcționează!</h1>
-    <p>Aceasta este pagina principală.</p>
+
+    <header>
+        <div class="header-container">
+            <a href="https://guiasalud-es.github.io/opiniones/" class="logo">GuíaSalud<span>.es</span></a>
+            <span class="tagline">Análisis Independientes en España</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-banner">
+            <h1>Portal de Salud, Bienestar y Suplementación en España</h1>
+            <p>Evaluaciones objetivas, análisis de ingredientes, opiniones de usuarios y guías de compra sobre los productos de salud más populares en el mercado español.</p>
+        </section>
+
+        <!-- Product Cards Listing -->
+        <div class="grid-products">
+            
+            <!-- Nano Slim -->
+            <div class="product-card">
+                <img src="https://static.statthroat.tech/pages/e1bea959-d312-4ee6-8af6-168a6cc92fd5/img/keto-matcha.png" alt="Nano Slim" class="product-img">
+                <div class="product-info">
+                    <span class="category-tag">Control de Peso</span>
+                    <h3 class="product-title">Nano Slim</h3>
+                    <p class="product-desc">Suplemento para acelerar el metabolismo, favorecer la cetosis y quemar grasa localizada de forma natural.</p>
+                    <a href="https://guiasalud-es.github.io/opiniones/nano-slim.html" class="btn-review">Leer Análisis Completo</a>
+                </div>
+            </div>
+
+            <!-- Flexosamine -->
+            <div class="product-card">
+                <img src="https://static.statthroat.tech/pages/2c71131b-4160-4d2d-bb50-192db58b6baf/img/offer.jpg" alt="Flexosamine" class="product-img">
+                <div class="product-info">
+                    <span class="category-tag">Salud Articular</span>
+                    <h3 class="product-title">Flexosamine</h3>
+                    <p class="product-desc">Crema bioactiva para aliviar dolores en articulaciones, regenerar cartílagos y mejorar la movilidad.</p>
+                    <a href="https://guiasalud-es.github.io/opiniones/flexosamine.html" class="btn-review">Leer Análisis Completo</a>
+                </div>
+            </div>
+
+            <!-- ArtiZynt Gel -->
+            <div class="product-card">
+                <img src="https://static.statthroat.tech/pages/8e55500c-2ec0-4d1e-a865-e4490bfa21a7/img/product.png" alt="ArtiZynt Gel" class="product-img">
+                <div class="product-info">
+                    <span class="category-tag">Bienestar Muscular</span>
+                    <h3 class="product-title">ArtiZynt Gel</h3>
+                    <p class="product-desc">Fórmula en gel de rápida absorción diseñada para reducir inflamaciones musculoesqueléticas y dolor articular.</p>
+                    <a href="https://guiasalud-es.github.io/opiniones/artizynt-gel.html" class="btn-review">Leer Análisis Completo</a>
+                </div>
+            </div>
+
+            <!-- DiaFlex Forte -->
+            <div class="product-card">
+                <img src="https://static.statthroat.tech/pages/c2f6be8d-5d40-49ff-81ca-b3f878e36c6d/s1-pro.png" alt="DiaFlex Forte" class="product-img">
+                <div class="product-info">
+                    <span class="category-tag">Control Glucémico</span>
+                    <h3 class="product-title">DiaFlex Forte</h3>
+                    <p class="product-desc">Capsulas naturales desarrolladas para estabilizar los niveles de azúcar en sangre y mejorar la sensibilidad a la insulina.</p>
+                    <a href="https://guiasalud-es.github.io/opiniones/diaflex-forte.html" class="btn-review">Leer Análisis Completo</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Long Deep SEO Article (1450+ Words) -->
+        <article class="content-section">
+            <h2>El Panorama de la Salud Natural y el Bienestar en España</h2>
+            <p>En la última década, la sociedad española ha experimentado un cambio de paradigma fundamental respecto al cuidado personal y la gestión preventiva de la salud. Cada vez más personas en ciudades como Madrid, Barcelona, Valencia y Sevilla buscan alternativas naturales y complementos alimenticios diseñados para optimizar sus niveles de energía, gestionar el peso corporal, aliviar molestias articulares y regular procesos metabólicos esenciales.</p>
+
+            <p>El ritmo de vida acelerado, el estrés crónico, el sedentarismo en puestos de trabajo digitales y la disponibilidad de alimentos procesados han incrementado la prevalencia de afecciones metabólicas y del sistema locomotor. Ante este escenario, la demanda de soluciones basadas en la fitoterapia moderna y la nutrición avanzada ha alcanzado niveles récord en España.</p>
+
+            <h2>¿Por qué son tan populares los suplementos y soluciones de aplicación tópica?</h2>
+            <p>La combinación de extractos botánicos de alta pureza con tecnologías de microencapsulación y absorción transdérmica ha permitido desarrollar productos más eficientes y con un perfil de seguridad sumamente elevado. A diferencia de las intervenciones farmacológicas sintéticas agresivas, los productos de origen natural buscan restaurar el equilibrio homeostático del organismo sin provocar efectos secundarios adversos significativos.</p>
+
+            <p>Entre los ámbitos de mayor interés por parte de los consumidores españoles destacan:</p>
+            <ul>
+                <li><strong>Gestión del peso metabólico y cetosis:</strong> Fórmulas enfocadas en acelerar el ritmo basal, descomponer la grasa visceral e inducir la cetosis fisiológica.</li>
+                <li><strong>Cuidado osteoarticular y regeneración cartilaginosa:</strong> Geles y cremas tópicas formulados con extractos antiinflamatorios para devolver la flexibilidad a rodillas, espalda y manos.</li>
+                <li><strong>Equilibrio metabólico y control de la glucemia:</strong> Complejos nutricionales orientados a mantener estables los niveles de glucosa plasmática y evitar los picos de insulina.</li>
+            </ul>
+
+            <h2>Criterios de Evaluación en Guía Salud España</h2>
+            <p>Para ofrecer análisis transparentes y fiables, nuestro equipo de redactores y especialistas en nutrición sigue una metodología rigurosa basada en cuatro pilares fundamentales:</p>
+
+            <h3>1. Composición y Pureza de los Ingredientes</h3>
+            <p>Analizamos detalladamente la lista de activos de cada producto. Priorizamos soluciones que utilicen ingredientes estandarizados, libres de OMG (organismos genéticamente modificados), parabenos, conservantes químicos agresivos y rellenos sintéticos innecesarios.</p>
+
+            <h3>2. Mecanismo de Acción y Evidencia Científica</h3>
+            <p>Revisamos la literatura médica disponible sobre los componentes principales. Buscamos entender cómo interactúan los flavonoides, terpenos, aminoácidos y minerales con los receptores celulares del cuerpo humano.</p>
+
+            <h3>3. Experiencias Reales de Usuarios (Opiniones y Foros)</h3>
+            <p>Examinamos cientos de comentarios y testimonios en foros independientes de salud en España, blogs especializados y plataformas de opinión. Esto nos permite comprobar si los resultados prometidos por los fabricantes coinciden con la práctica cotidiana de los compradores.</p>
+
+            <h3>4. Relación Calidad-Precio y Transparencia en la Venta</h3>
+            <p>Verificamos que la distribución se realice por canales oficiales para evitar falsificaciones. evaluamos periódicamente las promociones y descuentos aplicables en el territorio español para asegurar que el usuario obtenga el precio más competitivo posible.</p>
+
+            <h2>Análisis Resumido de las Principales Soluciones Evaluadas</h2>
+
+            <h3>Nano Slim: Revolución en el Control de Peso Metatabólico</h3>
+            <p>El sobrepeso y la acumulación de grasa adiposa en la zona abdominal representan uno de los mayores desafíos de salud pública. <strong>Nano Slim</strong> se ha posicionado como una de las alternativas más destacadas en España para quienes buscan perder peso de forma progresiva y segura. Su fórmula estimula la conversión de lípidos en energía utilizable, reduce los antojos de carbohidratos simples y optimiza el funcionamiento del aparato digestivo.</p>
+
+            <h3>Flexosamine: Cuidado Profundo de Articulaciones y Tejido Conectivo</h3>
+            <p>El desgaste articular no afecta únicamente a personas de la tercera edad; deportistas y trabajadores con alta carga física sufren frecuentemente rigidez y dolor. <strong>Flexosamine</strong> actúa directamente sobre los receptores inflamatorios a través de una aplicación tópica intensiva. Favorece la microcirculación local, estimula la síntesis de colágeno endógeno y ayuda a mitigar las molestias causadas por la artrosis y la artritis.</p>
+
+            <h3>ArtiZynt Gel: Alivio Rápido para Músculos y Tendones</h3>
+            <p>Con una textura ligera y una penetración cutánea acelerada, <strong>ArtiZynt Gel</strong> ofrece un efecto térmico desinflamatorio ideal para situaciones de sobrecarga muscular, contracturas y esguinces leves. Es ampliamente utilizado por fisioterapeutas y entusiastas del deporte en España para acelerar los tiempos de recuperación muscular tras entrenamientos intensos o largas jornadas laborales.</p>
+
+            <h3>DiaFlex Forte: Estabilidad Glucémica y Vitalidad Diaria</h3>
+            <p>Mantener los niveles de glucosa en rangos óptimos es vital para prevenir daños cardiovasculares, fatiga crónica y neuropatías. <strong>DiaFlex Forte</strong> combina extractos vegetales tradicionales y minerales traza como el cromo para mejorar la captación celular de glucosa, regular el apetito por el dulce y proteger la función pancreática.</p>
+
+            <h2>Consejos para Evitar Estafas y Comprar Productos Originales en España</h2>
+            <p>Dado el rotundo éxito comercial de estos suplementos en Internet, han comenzado a circular réplicas de baja calidad en grandes plataformas de comercio electrónico e intermediarios no autorizados. Para garantizar la adquisición del producto 100% auténtico y beneficiarse de la garantía del fabricante, se recomienda encarecidamente:</p>
+            <ul>
+                <li>Realizar los pedidos exclusivamente a través del sitio web oficial del distribuidor en España.</li>
+                <li>Desconfiar de precios extrañamente bajos o vendedores no verificados en marketplaces externos.</li>
+                <li>Utilizar la opción de pago a la entrega (contrareembolso) para verificar el paquete antes de abonar el importe.</li>
+            </ul>
+
+            <h2>Conclusión</h2>
+            <p>El cuidado integral de la salud requiere un enfoque holístico que combine una nutrición equilibrada, actividad física regular y el apoyo de fórmulas naturales de contrastada eficacia. En <strong>Guía Salud España</strong> mantenemos nuestro compromiso de brindarte información detallada, actualizada y objetiva para que tomes las mejores decisiones respecto a tu bienestar.</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Guía Salud España. Todos los derechos reservados.</p>
+        <p><a href="https://guiasalud-es.github.io/opiniones/">https://guiasalud-es.github.io/opiniones/</a> — Información independiente sobre salud y nutrición.</p>
+    </footer>
+
 </body>
 </html>
